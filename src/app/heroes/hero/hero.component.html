@@ -1,0 +1,38 @@
+<h1>{{ name }}</h1> <!-- Dentro de las llaves {{}} se puede poner cualquier
+expresión de JS, sumas y multiplicaciones, llamar propiedades o funciones -->
+
+<dl>
+  <td>Nombre:</td>
+  <dd>{{ name }}</dd>
+
+  <td>Edad:</td>
+  <dd>{{ age }}</dd>
+
+  <td>Método:</td>
+  <dd> {{getHeroDescription()}}</dd>
+
+  <td>Capitalizado</td>
+  <dd>{{ capitalizedName }}</dd>
+</dl>
+
+<!-- EL botón se mostrará si el ngIF es true, en este caso si el name
+es distinto de Spiderman y age de 25. Esta acción quita el botón al dar click-->
+<button
+  *ngIf="name !== 'Spiderman'"
+  (click)="changeHero()"
+  class="btn btn-primary mx-2">
+  cambiar Nombre
+</button>
+
+<button
+  *ngIf="age !== 25"
+  (click)="changeAge()"
+  class="btn btn-primary">
+  cambiar Edad
+</button>
+
+<button
+(click)="resetHero()" class="btn btn-primary mx-2">
+Reset
+</button>
+

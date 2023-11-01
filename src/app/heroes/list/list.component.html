@@ -1,0 +1,30 @@
+<h3>Listado de Héroes</h3>
+
+<!-- la condición se va cumplir si tenemos un heroe eliminado en la variable,
+es decir, mientras el ngIF sea true. Al ejecutar la función removeLastHero,
+el método pop() devuelve el elemento removido y lo guarda en la variable deletHero, en ese momento ya es true
+y se va a mostrar la etiqueta h3 -->
+<div *ngIf="deletHero; else nothingWasDeleted" >
+<h3>Héroe borrado <small class="text-danger">{{ deletHero }}</small></h3>
+</div>
+
+<ng-template #nothingWasDeleted>
+  <h3>No ha borrado nada.</h3>
+</ng-template> <!-- El ng-template muestra el elemento al comienzo
+de la compilación debido a que deletHero es false, cuando sea lo contrario (else),
+se ocultará. El ng-template utiliza una referencia con el símbolo(#) para
+poder ser invocado como las variables. -->
+
+<button
+*ngIf="heroNames.length > 0"
+  (click)="removeLastHero()"
+  class="btn btn-outline-danger">
+  Borrar último héroe
+</button>
+
+<ul class="mt-2 list-group">
+  <li *ngFor="let name of heroNames"
+  class="list-group-item">{{ name }}</li>
+</ul>
+
+
